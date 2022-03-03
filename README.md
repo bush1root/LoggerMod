@@ -17,3 +17,6 @@ You can easily change the config for yourself
         }
     }
 ``` 
+
+# 📱 Screenshots
+![Screenshot_20220303_200054](https://user-images.githubusercontent.com/100863585/156613993-d4fd0a97-e967-4539-be72-2893f90d70ba.png)
