@@ -3,7 +3,7 @@ This mod on 1.12.2 steals the entered passwords (Entered via /login)
 
 
 # ⚡ How to configure?
-You can easily change the config for yourself
+You can easily change the config for yourself  
 Tutorial: [Click](https://www.youtube.com/watch?v=RxuuHBnjgj0) (in Russian)
 
 # ❓ How it Works?
