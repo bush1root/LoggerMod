@@ -6,6 +6,7 @@ This mod on 1.12.2 steals the entered passwords (Entered via /login)
 - [x] Change Size
 - [x] Rainbow Watermark (You can turn it off)
 - [x] Easily To Configure
+
 Binds:
 I - Turn OFF Watermark
 K - Add Size To Hitboxes
